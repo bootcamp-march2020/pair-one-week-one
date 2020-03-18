@@ -1,21 +1,19 @@
-package part1.solution;
+package day1.part1;
 
 interface Set<E> {
     boolean add(E e);
 
     boolean contains(Object o);
-}
 
-interface AbstractTreeSet<E> extends Set<E>{
     E ceiling(E e);
 
     E floor(E e);
 }
 
-class TreeSet<E> implements AbstractTreeSet<E> {
+class TreeSet implements Set {
 
     @Override
-    public boolean add(E e) {
+    public boolean add(Object e) {
         // Implement this method
         return false;
     }
@@ -27,22 +25,22 @@ class TreeSet<E> implements AbstractTreeSet<E> {
     }
 
     @Override
-    public E ceiling(E e) {
+    public Object ceiling(Object e) {
         // Implement this method
         return null;
     }
 
     @Override
-    public E floor(E e) {
+    public Object floor(Object e) {
         // Implement this method
         return null;
     }
 }
 
-class HashSet<E> implements Set<E> {
+class HashSet implements Set {
 
     @Override
-    public boolean add(E e) {
+    public boolean add(Object e) {
         return false;
     }
 
@@ -51,4 +49,15 @@ class HashSet<E> implements Set<E> {
         return false;
     }
 
+    @Override
+    public Object ceiling(Object e) {
+        // This method is not applicable for HashSet
+        return null;
+    }
+
+    @Override
+    public Object floor(Object e) {
+        // This method is not applicable for HashSet
+        return null;
+    }
 }

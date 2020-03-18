@@ -1,6 +1,6 @@
 import com.google.common.collect.Maps;
-import day2.InvalidQueryParamException;
-import day2.QueryParamParser;
+import day2.ex1.InvalidQueryParamException;
+import day2.ex1.QueryParamParser;
 import org.junit.Test;
 
 import java.util.HashMap;

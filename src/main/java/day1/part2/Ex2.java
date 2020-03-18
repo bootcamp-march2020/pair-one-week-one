@@ -1,4 +1,4 @@
-package part2;
+package day1.part2;
 
 import java.util.Map;
 

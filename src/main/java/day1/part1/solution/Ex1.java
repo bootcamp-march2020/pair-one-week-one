@@ -1,4 +1,4 @@
-package part1.solution;
+package day1.part1.solution;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package part1;
+package day1.part1;
 
 enum ReportingType {
     CSV, XML;

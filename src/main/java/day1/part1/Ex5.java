@@ -1,4 +1,4 @@
-package part1;
+package day1.part1;
 
 class Keyboard {
     char read() {
