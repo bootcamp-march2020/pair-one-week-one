@@ -15,22 +15,8 @@ public final class Length {
         this.unit = unit;
     }
 
-    public enum Unit {
-
-        INCHES("Inches",2.54D),
-        CM("Centi meters",1D);
-
-        String metricSystemName;
-        double conversionMultiplier;
-
-        Unit(String metricSystemName, double conversionMultiplier) {
-            this.metricSystemName = metricSystemName;
-            this.conversionMultiplier = conversionMultiplier;
-        }
-
-         double toCentimeters(Length length) {
-            return length.value * conversionMultiplier;
-        }
+    public double getValue() {
+        return value;
     }
 
     @Override
@@ -48,6 +34,24 @@ public final class Length {
     @Override
     public int hashCode() {
         return Objects.hash(value, unit);
+    }
+}
+
+public enum Unit {
+
+    INCHES("Inches",2.54D),
+    CM("Centi meters",1D);
+
+    String metricSystemName;
+    double conversionMultiplier;
+
+    Unit(String metricSystemName, double conversionMultiplier) {
+        this.metricSystemName = metricSystemName;
+        this.conversionMultiplier = conversionMultiplier;
+    }
+
+    double toCentimeters(Length length) {
+        return length.getValue() * conversionMultiplier;
     }
 }
 
