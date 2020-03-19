@@ -6,9 +6,9 @@ import java.util.Objects;
 
 public final class Length {
 
-    private double value;
+    private final double value;
 
-    private Unit unit;
+    private final Unit unit;
 
     public Length(double value, Unit unit) {
         this.value = value;
@@ -17,13 +17,19 @@ public final class Length {
 
     public enum Unit {
 
-        INCHES("Inches"),
-        CM("Centi meters");
+        INCHES("Inches",2.54D),
+        CM("Centi meters",1D);
 
         String metricSystemName;
+        double conversionMultiplier;
 
-        Unit(String metricSystemName) {
+        Unit(String metricSystemName, double conversionMultiplier) {
             this.metricSystemName = metricSystemName;
+            this.conversionMultiplier = conversionMultiplier;
+        }
+
+         double toCentimeters(Length length) {
+            return length.value * conversionMultiplier;
         }
     }
 
@@ -34,31 +40,14 @@ public final class Length {
         Length length = (Length) o;
         if (unit == length.unit)
             return Double.compare(value, length.value) == 0;
-        double value1InCm = Converter.toCentimeters(this);
-        double value2InCm = Converter.toCentimeters(length);
+        double value1InCm = unit.toCentimeters(this);
+        double value2InCm = length.unit.toCentimeters(length);
         return Double.compare(value1InCm, value2InCm) == 0;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(value, unit);
-    }
-
-
-    public static final class Converter {
-        private static final Map<Unit, Double> CONVERSION_MULTIPLIER_MAP = new HashMap<>();
-
-        static {
-            CONVERSION_MULTIPLIER_MAP.put(Unit.INCHES, 2.54);
-            CONVERSION_MULTIPLIER_MAP.put(Unit.CM, 1.0);
-        }
-
-        static double toCentimeters(Length length) {
-            Double multiplier = CONVERSION_MULTIPLIER_MAP.get(length.unit);
-            if (null == multiplier)
-                throw new RuntimeException("Unknown unit type " + length.unit);
-            return length.value * multiplier;
-        }
     }
 }
 
