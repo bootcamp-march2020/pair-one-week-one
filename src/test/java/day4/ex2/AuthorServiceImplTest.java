@@ -63,8 +63,8 @@ public class AuthorServiceImplTest extends TestCase {
         when(mockedBookService.findBookByAuthor(any())).thenReturn(bookList);
 
         authorService.getTotalBooks(AUTHOT_JK_ROWLING);
-        verify(mockedBookValidatorServiceForHPBooks,times(bookList.size())).isValid(any());
 
+        verify(mockedBookValidatorServiceForHPBooks,times(bookList.size())).isValid(any());
     }
 
 }
