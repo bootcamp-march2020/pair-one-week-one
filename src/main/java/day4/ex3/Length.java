@@ -34,5 +34,3 @@ public final class Length {
         return Objects.hash(value, unit);
     }
 }
-
-
